@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <title>Gallary</title>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+        // Your JavaScript code here
+        let body = document.querySelector("body");
+        let button = document.querySelector("#ch_color");
+        button.addEventListener('click', function(event){
+            if (button.innerHTML === "light_pink")
+            {
+                body.style.backgroundColor = "pink";
+                button.innerHTML = "white";
+            }
+            else if (button.innerHTML === "white")
+            {
+
+                body.style.backgroundColor = "white";
+                button.innerHTML = "light_purpel";
+            }
+            else if (button.innerHTML === "light_purpel")
+            {
+
+                body.style.backgroundColor = "#947394";
+                button.innerHTML = "blue";
+            }
+            else if (button.innerHTML === "blue")
+            {
+
+                body.style.backgroundColor = "#6798b0";
+                button.innerHTML = "pink";
+            }
+            else if (button.innerHTML === "pink")
+            {
+
+                body.style.backgroundColor = "#c76b98";
+                button.innerHTML = "light_pink";
+            }
+
+        });
+
+    });
+
+        var i = 0;
+        var images = ['images/my_image.jpg','images/my_image2.jpg','images/my_image4.jpg','images/my_image7.jpg'];
+        var images_2 = ['images/my_image5.jpg','images/my_image6.jpg','images/my_image7.jpg','images/my_image8.jpg'];
+        var images_3 = ['images/my_image9.jpg','images/my_image10.jpg','images/my_image4.jpg','images/my_image3.jpg'];
+        var time = 3000;
+
+        function slides(){
+            document.first.src = images[i];
+            document.secound.src = images_2[i];
+            document.third.src = images_3[i];
+
+        if (i < images.length - 1){
+            i++;
+        }else{
+            i = 0;
+        }
+
+        setTimeout("slides()",time);
+        };
+
+    window.onload=slides;
+
+
+    </script>
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <h2 style="text-align: center; padding-top: 40px; font-size: 2rem;">Gallery <i class="fa-solid fa-image" style="font-size: 25px; color: brown;"></i></h2>
+        <button type="button" id="ch_color" class="btn btn-outline-primary">pink</button>
+
+        <section>
+            <!-- making a container called gallery-->
+            <div class="gallery">
+                <!--the class image is the box that contain image-->
+                <!--if we want to control the image it self it by <img> element-->
+                <div class="image">  <img src="images/my_image.jpg"> </div>
+                <div class="image">  <img src="images/my_image2.jpg"> </div>
+                <div class="image">  <img src="images/my_image4.jpg"> </div>
+            </div>
+
+            <div class="gallery">
+                <div class="image">  <img src="images/my_image3.jpg"> </div>
+                <div class="image">  <img src="images/my_image5.jpg"> </div>
+                <div class="image">  <img src="images/my_image6.jpg"> </div>
+            </div>
+
+            <div class="gallery">
+                <div class="image">  <img src="images/my_image7.jpg"> </div>
+                <div class="image">  <img src="images/my_image8.jpg"> </div>
+                <div class="image">  <img src="images/my_image9.jpg"> </div>
+            </div>
+        </section>
+
+        <section class="section2">
+            <div class="slides" >
+                <div class="project">
+                    <img name="first" alt="">
+                    <p>Project 1 - Description</p>
+                </div>
+
+                <div class="project">
+                    <img name="secound" alt="">
+                    <p>Project 2 - Description</p>
+                </div>
+
+                <div class="project">
+                    <img name="third" alt="">
+                    <p>Project 3 - Description</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

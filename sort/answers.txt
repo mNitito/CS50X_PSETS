@@ -1,0 +1,15 @@
+sort1 uses: Bubble sort
+
+How do you know?: as in Random 50000.txt it takes 6.7sec as it has to compare array[i] with array[i+1]
+and it  takes also about 6sec in reverse50000 as a result of comparing array[i] with array[i+1].. but in sorted it takes only about 1sec which refers to
+the alogoritm combered array[i] with array [i+1] fast as it already sorted
+
+sort2 uses: Merge sort
+
+How do you know?: as it diveds the array into half splits and then sort it and merge which is faster >> so in random it takes 1.3sec in reverse about 1.5sec but
+but in sorted which is easier to split then merge immeditly it takes only 1sec
+
+sort3 uses: Selection sort
+
+How do you know?: as in random , reversed and sorted it always takes approximatly the same to\ime which tells us that it is sorted as it going to the ever array[i]
+and checks with every anotther element in array .. and that tells us in best sutation it takes the same time

@@ -1,0 +1,74 @@
+quarters (25¢) - dimes (10¢) - nickels (5¢) - pennies (1¢)
+enter a number of cents: (49)
+49 - 25 = 24
+24 - 10 - 10 = 4
+4 - 1 - 1 -1 -1 = 0
+
+quarter -- cent - 25
+int cents = get_int("Enter Cents:")
+for (counter = 0; xxx; counter++ )
+{
+    if(counter %= 25)
+}
+49 = 49 - 1*25
+cents = cents - 1*25
+100 cents == 4 quarters
+75 cents == 3 quartes
+50 cents == 2 quarters
+25 cents == 1 quarters
+0 cents == 0 quarters
+
+quarters == 0;
+if (cents == 25 || cents >=26 || cents <=49)
+{
+    quarters = quarters + 1 ;
+
+    // quarters == 1;
+
+}
+
+if (cents == 50 || cents >=51 || cents <=74)
+{
+    quarters = quarters + 1 ;
+
+     // quarters == 2;
+}
+
+if (cents == 25 + 25n || cents >=26 + 25n || cents <=49 + 25n)
+{
+      quarters = quarters + 1 ;
+
+       // quarters == 3;
+}
+
+no. of quarterrs == cents / 25
+
+if (cents - 25 == +ve)
+{
+    return cents - 25 ;
+
+    if()
+}
+
+
+reminder == 70
+50
+10
+10
+start from zeroo
+25 + 25 == 50
+10 + 10 == 20
+check if current cent (greater than 25)
+70 - 25 == 45
+45 -25 == 20
+20 less than 25
+check if 20 is greater than 10
+20 -10 == 10
+check if 10 gretaer than or equal 10
+10 - 10 == 0
+if 0 == 0
+stop
+
+85 - 25 = 60 quarter = 1
+60 - 25 = 35 quarter = 2
+35 -25 = 10  quarter = 3

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            let button = document.querySelectorAll('button');
+
+            let correct_sound = new Audio('hotel-bell.mp3');
+            let wrong_sound = new Audio('wrong-answer.mp3');
+
+            // wait for the web to download
+            document.addEventListener('DOMContentLoaded', function(){
+            // get all the elements with class correct
+            let corrects = document.querySelectorAll('.correct');
+
+            // Add event listeners to all the correct buttons
+
+            // looping over the every element with correct class
+            for (let i = 0; i < corrects.length; i++)
+            {
+                corrects[i].addEventListener('click', function(){
+                    // set background to green
+                    corrects[i].style.backgroundColor = 'hsl(120, 100%, 80%)';
+                    correct_sound.play();
+                    // going to the parent of the corrects[i] to get accsses from it to the class feedback
+                    corrects[i].parentElement.querySelector('.feedback').textContent = 'Correct!';
+
+                });
+            }
+
+            // if the answer is incorrect
+            let incorrect = document.querySelectorAll('.incorrect');
+
+            for (let i = 0; i < incorrect.length; i++)
+            {
+                incorrect[i].addEventListener('click', function(){
+                    // set background to red
+                    incorrect[i].style.backgroundColor = 'rgb(255, 192, 203)';
+                    incorrect[i].style.cursor = 'pointer';
+                    wrong_sound.play();
+                    incorrect[i].parentElement.querySelector('.feedback').innerHTML = 'Incorrect';
+                })
+            }
+            // check the answer
+            let check = document.querySelector('#check');
+            check.addEventListener('click', function() {
+                let input = document.querySelector('input');
+                if (input.value.trim() === 'Brasília'){
+                input.style.backgroundColor = 'hsl(120, 100%, 80%)';
+                input.parentElement.querySelector('.feedback').innerHTML = 'Correct!';
+            }
+            else{
+                input.style.backgroundColor = 'rgb(255, 192, 203)';
+                input.parentElement.querySelector('.feedback').innerHTML = 'Incorrect!';
+            }
+            });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3> What is the national animal of Australia? </h3>
+                    <button class="correct"> Kangaroo </button>
+                    <button class="incorrect">  Koala </button>
+                    <button class="incorrect"> Platypus </button>
+                    <button class="incorrect"> Emu </button>
+                    <p class='feedback'></p>
+
+                <h3> Which planet in our solar system has the most moons? </h3>
+                    <button class="correct"> Jupiter </button>
+                    <button class="incorrect">  Saturn </button>
+                    <button class="incorrect"> Uranus </button>
+                    <button class="incorrect"> Neptune </button>
+                    <p class='feedback'></p>
+
+                <h3> What is the largest mammal in the world? </h3>
+                    <button class="incorrect"> African Elephant </button>
+                    <button class="correct">  Blue Whale </button>
+                    <button class="incorrect"> Giraffe </button>
+                    <button class="incorrect"> Polar Bear </button>
+                    <p class='feedback'></p>
+
+                <h3> What is the smallest bone in the human body? </h3>
+                    <button class="correct"> Stapes (in the ear) </button>
+                    <button class="incorrect">  Femur (in the leg) </button>
+                    <button class="incorrect"> Tibia (in the leg) </button>
+                    <button class="incorrect"> Humerus (in the arm) </button>
+                    <p class='feedback'></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3> What is the capital city of Brazil? </h3>
+                    <input type="text"></input>
+                    <button id="check">Check Answer</button>
+                    <p class="feedback"></p>
+            </div>
+        </div>
+    </body>
+</html>

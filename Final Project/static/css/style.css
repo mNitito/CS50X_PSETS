@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+.navbar {
+    background-color: #008080;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 999;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    margin-left: 40px; 
+}
+
+.logo-image img {
+    max-height: 50px; 
+}
+
+.elements a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    font-size: 20px;
+}
+
+.elements a:hover{
+    color:  #FF1493;;
+}
+
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    cursor: pointer;
+}
+
+.fa-bars {
+    font-size: 24px; /* Adjust icon size as needed */
+}
+
+.dropdown-content {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden off-screen to the left */
+    width: 250px; /* Adjust width as needed */
+    height: 100%;
+    background-color: #333;
+    z-index: 1;
+    padding-top: 30px; /* Adjust according to your navbar height */
+    transition: left 0.3s ease; /* Smooth transition for animation */
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.show {
+    left: 0px; /* Show the dropdown menu by moving it to the left */
+}
+
+.close-btn {
+    color: #ccc;;
+    padding: 10px 20px;
+    font-size: 25px;
+    cursor: pointer;
+    margin-bottom: 10px; /* Add margin to separate from other menu items */
+}
+
+.close-btn:hover{
+    color: red;
+    padding-bottom: 20px;
+}
+
+.profile{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    color: #ccc;
+    font-size: 25px;
+    padding-left: 20px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.profile:hover{
+    color: #FF1493;
+}
+
+
+.log-in a{
+    padding-top: 125px;
+    padding-left: 20px;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.log-in a:hover{
+    color: #FF1493;
+    
+    
+}
+
+main {
+    background-image: url("../images/trivia_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay color with 50% opacity */
+    height: 150vh;
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    justify-content: center;
+    align-items: center;
+}
+
+.h2{
+    font-family: "Dancing Script", cursive;
+    color: white;
+}
+
+.main-topic {
+    text-align: center;
+    margin-bottom: 40px; /* Adjust spacing between main topic and cards */
+}
+
+.cards-section {
+    width: 100%; /* Ensure cards stretch across the full width */
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px; /* Adjust maximum width of cards */
+    margin: 0 auto; /* Center cards horizontally */
+}
+
+.card {
+    width: 325px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    opacity: 0.92;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px 10px 0 0;
+}
+
+.sentence {
+    padding: 10px;
+    margin: 0;
+    color: #f8f8f8;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* styling the section practice */
+.practice {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.lets{
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.h3-queshion{
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-style: normal;
+    padding-bottom: 20px;
+}
+
+.answer {
+    background-color: #2ecc71;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.answer p {
+    margin: 0;
+}
+
+.reveal-answer {
+    background-color: #008080;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reveal-answer:hover {
+    background-color: #006666;
+}
+
+
+button, input[type="submit"] {
+    background-color: #d9edff;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #bcd9ff;
+}
+
+.quizzes {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quizzes h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.quiz {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quiz h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+.quiz p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.start-quiz {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-quiz:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+

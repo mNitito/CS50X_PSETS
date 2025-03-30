@@ -1,0 +1,25 @@
+1 prompot the user to enter a heigtht of pramid
+2 create no of rows , at the end of each row print("\n");
+print (".") no. of [ rows(height)(i) - the integer of coulmn (j) ];
+3 creat no. of # coulmns=the no. of the column(j);
+
+height=("Enter the height of pyramid");
+for(int i=0;i<height;i++)
+{
+    for(int j=0;j<height-1;j++)
+    {
+        printf(".");
+    }
+    printf("\n");
+}
+
+....    ...
+....    ..
+....    .
+....
+- height - 1
+
+
+cashier
+50 / 25 =2
+74 / 25 %=

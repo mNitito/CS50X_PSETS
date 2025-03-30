@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <title>Trivia</title>
+</head>
+
+
+<body>
+
+    <!--  the navbar  -->
+    <nav class="navbar">
+        <!--  The left things the icon and the logo  -->
+        <div class="left">
+
+            
+            <!-- the dropdown menu -->
+            <div class="dropdown">
+
+                <!--  the dropbutton  -->
+                <div class="dropbtn" onclick="toggleDropdown()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+
+                <!-- the logo image  -->
+                <div class="logo-image">
+                    <img src="../static/images/trivia_logo.png" alt="trivia_logo">
+                </div>
+
+                <!-- ---------------------------------------------- -->
+                <!--  the div of the close button && the profile icon && the optiones  -->
+                <div class="dropdown-content" id="dropdownContent">
+
+                    <!--  the close button   -->
+                    <div class="close-btn" onclick="closeDropdown()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+
+                    <!-- the profile icon  -->
+                    <!-- the profile icon -->
+                    <div class="profile">
+                        {{ user_name }} <i class="fa-solid fa-user"></i>
+                    </div>
+
+
+                    <!-- the optiones  -->
+                    <a href="score">Score <i class="fa-solid fa-star"></i></a>
+                    <a href="#">languages <i class="fa-solid fa-globe"></i></a>
+                    <a href="#">Achievements <i class="fa-solid fa-trophy"></i></a>
+                    <a href="#">My_level <i class="fa-solid fa-chart-simple"></i></a>
+                    <a href="#">Friends <i class="fa-solid fa-user-group"></i></a>
+                   
+                    {%  if logged_in  %}
+                    <div class="log-in">
+                        <a href="/logout" target="_blank">Log out <i class="fa-solid fa-right-to-bracket"></i></a>
+                    </div>
+
+                    {% else %}
+                    <div class="log-in">
+                        <a href="/sign-in" target="_blank">Log in <i class="fa-solid fa-right-to-bracket"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+            
+            </div>
+        </div>
+    
+    
+        <div class="elements">
+           
+            <a href="#quizzes">quizes</a>
+            <a href="#practice">practice</a>
+            <a href="#general knowledge">general knowledge</a>
+        </div>
+    </nav>
+
+
+    <main>
+        <section class="main-topic">
+            <h2 class="h2">let's go !</h2>
+        </section>
+    
+        <section class="cards-section">
+
+            <div class="cards">
+
+                <div class="card">
+                    <a href="Animals_trivia" target="_blank"><img src="../static/images/pink_panther wallpaper.jpeg" alt="Image 1"></a>
+                    <p class="sentence" >Animals </p>
+                </div>
+
+                <div class="card">
+                    <a href="Gamming" target="_blank"><img src="../static/images/Game .jpeg" alt="Image 2"></a>
+                    <p class="sentence" >Gaming</p>
+                </div>
+
+                <div class="card">
+                    <a href="/General" target="_blank"><img src="../static/images/Designer.png"alt="Image 3"></a>
+                    <p class="sentence">Genral</p>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+
+    <section class="practice" id="practice">
+
+        <h2 style="margin-left: 600px;" class="lets">Let's practice!</h2>
+
+        <div class="question">
+            <h3 class="h3-queshion"> What is the capital of France?</h3>
+            <button class="correct"> Paris </button>
+            <button class="incorrect">  London </button>
+            <button class="incorrect"> Berlin </button>
+            <button class="incorrect"> Rome </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Paris</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h3 class="h3-queshion"> Who wrote the play "Romeo and Juliet"?</h3>
+            <button class="correct"> William Shakespeare </button>
+            <button class="incorrect"> Charles Dickens </button>
+            <button class="incorrect"> Jane Austen </button>
+            <button class="incorrect"> J.K. Rowling </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: William Shakespeare</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h3 class="h3-queshion"> What is the largest planet in our solar system?</h3>
+            <button class="correct"> Jupiter </button>
+            <button class="incorrect"> Saturn </button>
+            <button class="incorrect"> Mars </button>
+            <button class="incorrect"> Earth </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Jupiter</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <h3 class="h3-queshion">  Who painted the Mona Lisa?</h3>
+            <button class="correct"> Leonardo da Vinci </button>
+            <button class="incorrect"> Michelangelo </button>
+            <button class="incorrect"> Vincent van Gogh </button>
+            <button class="incorrect"> Pablo Picasso </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Leonardo da Vinci</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <h3 class="h3-queshion"> What is the chemical symbol for gold?</h3>
+            <button class="correct"> Au </button>
+            <button class="incorrect"> Ag </button>
+            <button class="incorrect"> Fe </button>
+            <button class="incorrect"> Cu </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Au</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <h3 class="h3-queshion"> What year did the Titanic sink?</h3>
+            <button class="correct"> 1912 </button>
+            <button class="incorrect"> 1914 </button>
+            <button class="incorrect"> 1916 </button>
+            <button class="incorrect"> 1918 </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: 1912</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <h3 class="h3-queshion"> Who wrote the novel "To Kill a Mockingbird"?</h3>
+            <button class="correct"> Harper Lee </button>
+            <button class="incorrect"> J.K. Rowling </button>
+            <button class="incorrect"> Ernest Hemingway </button>
+            <button class="incorrect"> F. Scott Fitzgerald </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Harper Lee</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <h3 class="h3-queshion"> What is the chemical symbol for oxygen?</h3>
+            <button class="correct"> O </button>
+            <button class="incorrect"> H </button>
+            <button class="incorrect"> N </button>
+            <button class="incorrect"> C </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: O</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <h3 class="h3-queshion"> What is the largest ocean on Earth?</h3>
+            <button class="correct"> O </button>
+            <button class="incorrect"> H </button>
+            <button class="incorrect"> N </button>
+            <button class="incorrect"> C </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Pacific Ocean</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <h3 class="h3-queshion"> Who discovered penicillin?</h3>
+            <button class="correct"> O </button>
+            <button class="incorrect"> H </button>
+            <button class="incorrect"> N </button>
+            <button class="incorrect"> C </button>
+            <div class="answer" style="display: none;">
+                <p>Answer: Alexander Fleming</p>
+            </div>
+            <button class="reveal-answer">Reveal Answer</button>
+        </div>
+
+    </section>
+
+    <script>
+        function toggleDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.toggle("show");
+}
+
+function closeDropdown() {
+    var dropdownContent = document.getElementById("dropdownContent");
+    dropdownContent.classList.remove("show");
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const revealButtons = document.querySelectorAll(".reveal-answer");
+
+    revealButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            const answer = button.previousElementSibling;
+            answer.style.display = "block";
+            button.style.display = "none";
+        });
+    });
+});
+
+let button = document.querySelectorAll('button');
+
+            let correct_sound = new Audio('hotel-bell.mp3');
+            let wrong_sound = new Audio('wrong-answer.mp3');
+
+            // wait for the web to download
+            document.addEventListener('DOMContentLoaded', function(){
+            // get all the elements with class correct
+            let corrects = document.querySelectorAll('.correct');
+
+            // Add event listeners to all the correct buttons
+
+            // looping over the every element with correct class
+            for (let i = 0; i < corrects.length; i++)
+            {
+                corrects[i].addEventListener('click', function(){
+                    // set background to green
+                    corrects[i].style.backgroundColor = 'hsl(120, 100%, 80%)';
+                    correct_sound.play();
+                    // going to the parent of the corrects[i] to get accsses from it to the class feedback
+                    corrects[i].parentElement.querySelector('.feedback').textContent = 'Correct!';
+
+                });
+            }
+
+            // if the answer is incorrect
+            let incorrect = document.querySelectorAll('.incorrect');
+
+            for (let i = 0; i < incorrect.length; i++)
+            {
+                incorrect[i].addEventListener('click', function(){
+                    // set background to red
+                    incorrect[i].style.backgroundColor = 'rgb(255, 192, 203)';
+                    incorrect[i].style.cursor = 'pointer';
+                    wrong_sound.play();
+                    incorrect[i].parentElement.querySelector('.feedback').innerHTML = 'Incorrect';
+                })
+            }
+        });
+        async function fetchData() {
+            try {
+                const response = await fetch('https://api.nationalize.io?name=nathaniel', {
+                });
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+}
+
+fetchData();
+
+</script>
+</body>
+</html>

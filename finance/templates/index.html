@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td> {{ result.symbol }} </td>
+                        <td> {{ result.shares }} </td>
+                        <td> {{ usd(result.price) }} </td>
+                        <td> {{ usd(result.total_cost) }} </td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+        <hr>
+        <tfoot>
+            <tr>
+                <th >Cash Avaliable:</th>
+                <td > {{ usd(cash) }} </td>
+            </tr>
+            <tr>
+                <th>Grand Total:</th>
+                <td > {{ usd(grand_total) }} </td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

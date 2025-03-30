@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #001b2e	;
+}
+
+
+h2{
+    text-align: center;
+    color: brown;
+    padding-top:150px;
+
+}
+
+.keep_touch{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Dancing Script", cursive;
+    color: blueviolet;
+}
+i:hover{
+    opacity: 0.5;
+}

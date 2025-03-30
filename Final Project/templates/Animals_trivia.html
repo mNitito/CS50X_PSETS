@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/css/styless.css">
+    <link rel="stylesheet" href="styless.css">
+    <title>Animals</title>
+</head>
+<body>
+
+
+    <div id="question"></div>
+    <div id="options"></div>
+    <div class="answer" style="display: none;"> <p></p> </div>
+    <audio id="correctSound" src="../static/audioes/correct-answer.mp3"></audio>
+    <audio id="wrongSound" src="../static/audioes/inncorect.mp3"></audio>
+
+    <!-- Balloon and message container -->
+    <div id="balloon-container">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div id="message">Keep Going!</div>
+    </div>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #balloon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 10;
+            display: none; /* Hide by default */
+        }
+
+        .balloon {
+            position: absolute;
+            width: 100px;
+            height: 120px;
+            background-image: url('../static/images/Baloon.png');
+            background-size: cover;
+            background-position: center;
+            animation: float 3s ease-in infinite;
+        }
+
+        #message {
+            position: absolute;
+            color: #fff;
+            font-size: 3rem;
+            font-family: 'Cursive', sans-serif; /* Cool handwriting style */
+            text-align: center;
+            z-index: 20;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .balloon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-duration: 4s;
+        }
+
+        .balloon:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-duration: 4s;
+        }
+
+        .balloon:nth-child(3) {
+            bottom: 10%;
+            left: 50%;
+            animation-duration: 4s;
+        }
+
+        .balloon:nth-child(4) {
+            top: 50%;
+            right: 25%;
+            animation-duration: 4s;
+        }
+
+        .balloon:nth-child(5) {
+            bottom: 20%;
+            left: 25%;
+            animation-duration: 4s;
+        }
+
+    </style>
+
+    <script>
+        console.log('update_score function called with:');
+        console.log("hello");
+
+
+        let correctAnswersInSequence = 0;
+
+        function handleAnswer(isCorrect) {
+            if (isCorrect) {
+                correctAnswersInSequence++;
+                if (correctAnswersInSequence === 5) {
+                    showBalloonEffect();
+                    correctAnswersInSequence = 0; // Reset count after showing the effect
+                }
+            } else {
+                correctAnswersInSequence = 0; // Reset count if answer is incorrect
+            }
+        }
+
+        function showBalloonEffect() {
+        const balloonContainer = document.getElementById('balloon-container');
+        balloonContainer.style.display = 'flex';
+        balloonContainer.style.opacity = 1;
+
+        setTimeout(() => {
+            balloonContainer.style.opacity = 0;
+            setTimeout(() => {
+                balloonContainer.style.display = 'none';
+            }, 300); // Shorter fade-out time
+        }, 2000); // Shorter display time
+    }
+
+        function update_score(scoreChange) {
+            console.log('update_score function called with:', scoreChange); // Debugging statement
+
+            fetch('/update_score', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({score_change: scoreChange})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Score updated successfully');
+                } else {
+                    console.error('Error updating score:', data.error);
+                }
+            })
+            .catch(error => console.error('Error sending score update:', error));
+        }
+
+        function fetchTrivia() {
+    fetch('https://opentdb.com/api.php?amount=10&category=27&type=multiple')
+        .then(response => {
+            if (response.status === 429) {
+                // Handle rate-limiting by waiting before retrying
+                console.error('Too many requests. Retrying in 10 seconds.');
+                setTimeout(fetchTrivia, 10000); // Retry after 10 seconds
+                throw new Error('Rate limit exceeded'); // Skip the rest of the code
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.results && data.results.length > 0) {
+                const questionElement = document.getElementById('question');
+                const optionsElement = document.getElementById('options');
+                const question = data.results[0];
+
+                questionElement.innerHTML = question.question;
+
+                const options = [...question.incorrect_answers, question.correct_answer];
+                options.sort(() => Math.random() - 0.5);
+
+                const answerElement = document.querySelector('.answer p');
+                document.querySelector('.answer').style.display = 'none';
+                optionsElement.innerHTML = '';
+
+                options.forEach(option => {
+                    const optionElement = document.createElement('div');
+                    optionElement.classList.add('option');
+                    optionElement.innerHTML = option;
+                    optionElement.addEventListener('click', () => {
+                        const allOptions = document.querySelectorAll('.option');
+                        allOptions.forEach(opt => opt.style.pointerEvents = 'none');
+
+                        let scoreChange = 0;
+                        if (option === question.correct_answer) {
+                            const correctSound = document.getElementById('correctSound');
+                            correctSound.play();
+                            optionElement.innerHTML += '<i class="fas fa-check"></i>';
+                            optionElement.style.backgroundColor = '#6D9C9A';
+                            scoreChange = 10;
+                            handleAnswer(true);
+                        } else {
+                            const wrongSound = document.getElementById('wrongSound');
+                            wrongSound.play();
+                            optionElement.innerHTML += '<i class="fas fa-xmark"></i>';
+                            optionElement.style.backgroundColor = '#E57373';
+                            answerElement.innerHTML = `The correct answer is: ${question.correct_answer}`;
+                            document.querySelector('.answer').style.display = 'block';
+                            scoreChange = -5;
+                            handleAnswer(false);
+                        }
+
+                        console.log('Score change calculated:', scoreChange);
+                        update_score(scoreChange);
+
+                        fetchTrivia(); // Fetch next question immediately
+                    });
+                    optionsElement.appendChild(optionElement);
+                });
+            } else {
+                console.error('No trivia questions available.');
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching trivia:', error);
+            if (error.message !== 'Rate limit exceeded') {
+                setTimeout(fetchTrivia, 1000); // Retry after 10 seconds
+            }
+        });
+}
+// https://opentdb.com/api.php?amount=1&category=27&type=multiple
+// https://opentdb.com/api.php?amount=10&category=27&type=multiple
+
+fetchTrivia();
+
+    </script>
+</body>
+</html>

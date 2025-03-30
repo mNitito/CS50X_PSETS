@@ -1,0 +1,39 @@
+*{
+    line-height: 1.5rem;
+}
+header {
+    text-align: center;
+}
+
+h2{
+    color: #712E1E;
+}
+
+.about,.interests,.background{
+    margin-left: 10px;
+    font-size: 1.1rem;
+    background-color: #f9f9f9;
+
+}
+
+.interests{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.interest img{
+    width: 300px;
+    height: auto;
+    border: 2px solid #fcebeb;
+    border-radius: 13px;
+    transition: 400ms;
+    cursor: pointer;
+}
+
+.interest img:hover{
+    transform: scale(1.1);
+    filter: contrast(1.3);
+}
+
