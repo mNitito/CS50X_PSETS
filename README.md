@@ -28,7 +28,7 @@ The problem sets explore a **wide range of computer science domains**, including
 - 📂 **Data Structures**: Worked with arrays, linked lists, hash tables, and trees to efficiently manage data.
 - 🏗 **Software Engineering**: Applied principles of software design, testing, debugging, and best practices.
 - 🌍 **Web Development**: Developed full-stack applications using Flask, integrating databases and user authentication.
-- 🔐 **Cybersecurity**: Explored encryption, secure coding practices, and basic penetration testing concepts.
+
 
 ---
 
